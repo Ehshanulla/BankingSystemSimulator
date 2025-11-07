@@ -1,7 +1,7 @@
-package org.example.thread.actions;
+package com.bank.thread.actions;
 
-import org.example.beans.Account;
-import org.example.service.BankOperations;
+import com.bank.beans.Account;
+import com.bank.service.BankOperations;
 
 public class WithdrawAction implements TransactionAction {
     public void execute(BankOperations bank, Account acc, double amount) throws Exception {

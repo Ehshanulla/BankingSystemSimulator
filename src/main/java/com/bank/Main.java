@@ -1,13 +1,11 @@
-package org.example;
+package com.bank;
 
 
 
 
-import org.example.beans.Account;
-import org.example.service.Bank;
-import org.example.service.BankOperations;
-import org.example.thread.TransactionManager;
-import org.example.thread.TransactionTask;
+import com.bank.service.Bank;
+import com.bank.service.BankOperations;
+import com.bank.thread.TransactionManager;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -76,6 +74,13 @@ public class Main {
                     case 7 -> {
                         TransactionManager manager = new TransactionManager(bank);
                         manager.startDemo();
+                        System.out.flush();
+                        System.err.flush();
+                        try {
+                            Thread.sleep(200);
+                        } catch (InterruptedException ignored) {}
+
+                        System.out.println("\nAll transactions processed. Returning to main menu...\n");
                         break;
                     }
 

@@ -1,11 +1,11 @@
-package org.example.thread;
+package com.bank.thread;
 
-import org.example.beans.Account;
-import org.example.service.BankOperations;
-import org.example.thread.actions.DepositAction;
-import org.example.thread.actions.TransactionAction;
-import org.example.thread.actions.TransferAction;
-import org.example.thread.actions.WithdrawAction;
+import com.bank.beans.Account;
+import com.bank.service.BankOperations;
+import com.bank.thread.actions.DepositAction;
+import com.bank.thread.actions.TransactionAction;
+import com.bank.thread.actions.TransferAction;
+import com.bank.thread.actions.WithdrawAction;
 
 import java.util.*;
 

@@ -34,7 +34,7 @@
                     <archive>
                         <manifest>
 
-                            <mainClass>org.example.Main</mainClass>
+                            <mainClass>com.bank.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

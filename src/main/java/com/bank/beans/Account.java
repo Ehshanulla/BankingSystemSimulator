@@ -1,4 +1,4 @@
-package org.example.beans;
+package com.bank.beans;
 
 public class Account {
     private String accountNumber;

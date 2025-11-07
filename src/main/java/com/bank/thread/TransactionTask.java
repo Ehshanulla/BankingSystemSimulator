@@ -1,8 +1,8 @@
-package org.example.thread;
+package com.bank.thread;
 
-import org.example.thread.actions.TransactionAction;
-import org.example.beans.Account;
-import org.example.service.BankOperations;
+import com.bank.thread.actions.TransactionAction;
+import com.bank.beans.Account;
+import com.bank.service.BankOperations;
 
 public class TransactionTask implements Runnable {
     private final BankOperations bank;

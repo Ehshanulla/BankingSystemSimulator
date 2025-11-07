@@ -1,7 +1,10 @@
-package org.example.service;
+package com.bank.service;
 
-import org.example.beans.Account;
-import org.example.exceptions.*;
+import com.bank.beans.Account;
+import com.bank.exceptions.AccountNotFoundException;
+import com.bank.exceptions.InsufficientBalanceException;
+import com.bank.exceptions.InvalidAmountException;
+import com.bank.exceptions.InvalidNameException;
 
 public interface BankOperations {
 

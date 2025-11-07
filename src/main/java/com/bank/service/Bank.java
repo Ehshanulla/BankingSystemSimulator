@@ -1,10 +1,10 @@
-package org.example.service;
+package com.bank.service;
 
-import org.example.beans.Account;
-import org.example.exceptions.AccountNotFoundException;
-import org.example.exceptions.InsufficientBalanceException;
-import org.example.exceptions.InvalidAmountException;
-import org.example.exceptions.InvalidNameException;
+import com.bank.beans.Account;
+import com.bank.exceptions.AccountNotFoundException;
+import com.bank.exceptions.InsufficientBalanceException;
+import com.bank.exceptions.InvalidAmountException;
+import com.bank.exceptions.InvalidNameException;
 
 import java.util.*;
 
@@ -80,20 +80,24 @@ public class Bank implements BankOperations{
 
     @Override
     public void transfer(String fromAcc, String toAcc, double amount)
-            throws AccountNotFoundException, InsufficientBalanceException, InvalidAmountException{
+            throws AccountNotFoundException, InsufficientBalanceException, InvalidAmountException {
         if (amount <= 0)
             throw new InvalidAmountException("Transfer amount must be positive");
 
         Account source = findAccount(fromAcc);
         Account target = findAccount(toAcc);
 
-        synchronized (source){
-            if(source.getBalance() < amount)
-                throw new InsufficientBalanceException("Not enough amount to initiate a  transfer");
+        Object lock1 = source.getAccountNumber().compareTo(target.getAccountNumber()) < 0 ? source : target;
+        Object lock2 = (lock1 == source) ? target : source;
 
-            withDraw(source.getAccountNumber(),amount);
-            deposit(target.getAccountNumber(),amount);
-            System.out.println("Transfer successful!");
+        synchronized (lock1) {
+            synchronized (lock2) {
+                if (source.getBalance() < amount)
+                    throw new InsufficientBalanceException("Not enough balance");
+                source.setBalance(source.getBalance() - amount);
+                target.setBalance(target.getBalance() + amount);
+                System.out.println("Transfer successful!");
+            }
         }
     }
 
